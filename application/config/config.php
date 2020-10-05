@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+date_default_timezone_set("Asia/Jakarta");
+
 /*
 |--------------------------------------------------------------------------
 | Base Site URL
@@ -23,7 +25,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = '';
+$http = 'http' . ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 's' : '') . '://';
+$newurl = str_replace("index.php","", $_SERVER['SCRIPT_NAME']);
+//proxy
+if (isset($_SERVER['HTTP_X_SCRIPT_NAME'])) {
+	$newurl = str_replace("index.php","", $_SERVER['HTTP_X_SCRIPT_NAME']);
+}
+$config['base_url'] = "$http" . $_SERVER['SERVER_NAME'] . ":8888" . $newurl;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +43,7 @@ $config['base_url'] = '';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------
