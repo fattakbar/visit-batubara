@@ -15,10 +15,32 @@
     <link href="<?= base_url('assets/themes/backend/') ?>assets/css/plugins.css" rel="stylesheet" type="text/css" />
     <!-- END GLOBAL MANDATORY STYLES -->
 
-    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
-    <link href="<?= base_url('assets/themes/backend/') ?>plugins/apex/apexcharts.css" rel="stylesheet" type="text/css">
-    <link href="<?= base_url('assets/themes/backend/') ?>assets/css/dashboard/dash_2.css" rel="stylesheet" type="text/css" />
-    <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
+    <!-- BEGIN PAGE LEVEL STYLES -->
+    <link rel="stylesheet" type="text/css" href="<?= base_url('assets/themes/backend/') ?>plugins/table/datatable/datatables.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url('assets/themes/backend/') ?>plugins/table/datatable/dt-global_style.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url('assets/themes/backend/') ?>plugins/toastr/toastr.css">
+    <link href="<?= base_url('assets/themes/backend/') ?>assets/css/components/custom-modal.css" rel="stylesheet" type="text/css" />
+    <!-- END PAGE LEVEL STYLES -->
+
+    <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
+    <script src="<?= base_url('assets/themes/backend/') ?>assets/js/libs/jquery-3.1.1.min.js"></script>
+    <script src="<?= base_url('assets/themes/backend/') ?>bootstrap/js/popper.min.js"></script>
+    <script src="<?= base_url('assets/themes/backend/') ?>bootstrap/js/bootstrap.min.js"></script>
+    <script src="<?= base_url('assets/themes/backend/') ?>plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="<?= base_url('assets/themes/backend/') ?>assets/js/app.js"></script>
+    <script src="<?= base_url('assets/themes/backend/') ?>plugins/bootbox/bootbox.min.js"></script>
+    <script src="<?= base_url('assets/themes/backend/') ?>plugins/toastr/toastr.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            App.init();
+        });
+    </script>
+    <script src="<?= base_url('assets/themes/backend/') ?>assets/js/custom.js"></script>
+    <!-- END GLOBAL MANDATORY SCRIPTS -->
+
+    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
+    <script src="<?= base_url('assets/themes/backend/') ?>plugins/table/datatable/datatables.js"></script>
+    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
 
 </head>
 <body class="alt-menu sidebar-noneoverflow">
@@ -115,7 +137,7 @@
                         </a>
                         <ul class="collapse submenu list-unstyled" id="app" data-parent="#topAccordion">
                             <li>
-                                <a href="#"> Admin </a>
+                                <a href="<?= base_url() ?>admin"> Admin </a>
                             </li>
                             <li>
                                 <a href="#"> User </a>
@@ -193,8 +215,8 @@
         
         <!--  BEGIN CONTENT PART  -->
         <div id="content" class="main-content">
-            <?= $output; ?>
             <div class="layout-px-spacing">
+                <?= $output; ?>
                 <div class="footer-wrapper">
                     <div class="footer-section f-section-1">
                         <p class="">Copyright © <?= date("Y"); ?> <a target="_blank" href="#">Laut Tador Software</a>, All rights reserved.</p>
@@ -210,24 +232,28 @@
 
     </div>
     <!-- END MAIN CONTAINER -->
-
-    <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
-    <script src="<?= base_url('assets/themes/backend/') ?>assets/js/libs/jquery-3.1.1.min.js"></script>
-    <script src="<?= base_url('assets/themes/backend/') ?>bootstrap/js/popper.min.js"></script>
-    <script src="<?= base_url('assets/themes/backend/') ?>bootstrap/js/bootstrap.min.js"></script>
-    <script src="<?= base_url('assets/themes/backend/') ?>plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script src="<?= base_url('assets/themes/backend/') ?>assets/js/app.js"></script>
     <script>
-        $(document).ready(function() {
-            App.init();
-        });
-    </script>
-    <script src="<?= base_url('assets/themes/backend/') ?>assets/js/custom.js"></script>
-    <!-- END GLOBAL MANDATORY SCRIPTS -->
-
-    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
-    <script src="<?= base_url('assets/themes/backend/') ?>plugins/apex/apexcharts.min.js"></script>
-    <script src="<?= base_url('assets/themes/backend/') ?>assets/js/dashboard/dash_2.js"></script>
-    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
+		$(document).on('click', '.confirm-delete', function(){
+		var id = $(this).attr("id");
+		    bootbox.dialog({
+			  	message: "Want to delete?",
+				buttons: {
+				    "cancel" : {
+				      	"label" : "<i class='ace-icon fa fa-times'></i> No",
+				      	"className" : "btn-danger"
+				    },
+				    "main" : {
+				      	"label" : "<i class='ace-icon fa fa-check'></i> Yes",
+				      	"className" : "btn-primary",
+				      	callback:function(result){
+				        	if (result) {
+								confirm_delete(id);
+							}
+				    	}
+				    }
+				}
+			});
+		});
+	</script>
 </body>
 </html>
