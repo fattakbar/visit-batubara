@@ -11,7 +11,7 @@
 1. Templating (done)
 2. Login & Register (soon)
 3. Dashboard (soon)
-4. Admin CRUD Master (soon)
+4. Admin CRUD Master (done)
 5. User CRUD Master (soon)
 6. News CRUD Master (soon)
 7. Etc.
