@@ -254,6 +254,11 @@
 				}
 			});
 		});
+
+        $(document).on('click', '.confirm-update', function(){
+		    var id = $(this).attr("id");
+		    edit(id);
+		});
 	</script>
 </body>
 </html>

@@ -65,7 +65,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button class="btn" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Cancel</button>
-                                <button type="submit" class="btn btn-primary">Save</button>
+                                <button type="submit" id="submit" class="btn btn-primary">Save</button>
                             </div>
                         <?= form_close() ?>
                     </div>
@@ -126,7 +126,9 @@
 
     $('#create').click(function(){ 
         $('#myModalLabel').text('Input Admin');
-        $('input[name="mod"]').val('create');      
+        $('input[name="mod"]').val('create');    
+        $('#form-group-password').show();  
+        $('#submit').text('Save');   
         $('#form')[0].reset();
         $('#boostrapModal-1').modal('show');
     });
@@ -155,14 +157,19 @@
         $.ajax({
             url: "<?php echo site_url('backend/admin/admin/get_action') ?>",
             data: {id: id},
-            dataType :"json",
+            dataType :"JSON",
             success: function(res){
-                $('#myModalLabel').text('Edit Dokter');    
+                $('#myModalLabel').text('Edit Admin'); 
+                $('#submit').text('Update');   
                 $('#form')[0].reset();
                 $('#boostrapModal-1').modal('show');
+                $('#form-group-password').hide();
                 $('input[name="mod"]').val('edit');
-                var r = res.data;
-                $('input[name="id"]').val(r.id);
+                var _result = res.data;
+                $('input[name="name"]').val(_result.name);
+                $('input[name="email"]').val(_result.email);
+                $('select[name="level"]').val(_result.level).change(); 
+                $('input[name="id"]').val(_result.id);
             }
         });
     }
