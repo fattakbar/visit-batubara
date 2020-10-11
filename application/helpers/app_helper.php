@@ -13,3 +13,14 @@ function level($id='')
 
   return $a;
 }
+
+function status($id='')
+{
+  if ($id == 1) {
+    $a = '<span class="badge badge-success">Active</span>';
+  } else {
+    $a = '<span class="badge badge-warning">Not Active</span>';
+  }
+
+  return $a;
+}
