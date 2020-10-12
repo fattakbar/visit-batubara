@@ -31,7 +31,7 @@ $newurl = str_replace("index.php","", $_SERVER['SCRIPT_NAME']);
 if (isset($_SERVER['HTTP_X_SCRIPT_NAME'])) {
 	$newurl = str_replace("index.php","", $_SERVER['HTTP_X_SCRIPT_NAME']);
 }
-$config['base_url'] = "$http" . $_SERVER['SERVER_NAME'] . ":8888" . $newurl;
+$config['base_url'] = "$http" . $_SERVER['SERVER_NAME'] . "" . $newurl;
 
 /*
 |--------------------------------------------------------------------------
