@@ -111,7 +111,7 @@ class Admin extends CI_Controller
                 if ($result) {
                     $_data = array(
                         'status' => TRUE,
-                        'alert' => $id
+                        'alert' => 'Success'
                     );
                 } else {
                     $_data = array(

@@ -140,7 +140,7 @@
                                 <a href="<?= base_url() ?>admin"> Admin </a>
                             </li>
                             <li>
-                                <a href="#"> User </a>
+                                <a href="<?= base_url() ?>user"> User </a>
                             </li>
                             <li>
                                 <a href="#"> News </a>
