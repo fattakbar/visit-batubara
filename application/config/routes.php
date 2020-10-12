@@ -56,4 +56,5 @@ $route['translate_uri_dashes'] = FALSE;
 # Admin Menu Route
 $route['admin'] = 'backend/admin/admin';
 
+# User Menu Route
 $route['user'] = 'backend/user/user';
